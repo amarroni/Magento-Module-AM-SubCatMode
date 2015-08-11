@@ -6,5 +6,5 @@ design/frontend/template/*                                                      
 
 # code
 @shell		mkdir -p "$PROJECT/app/code/local/AM"
-code                                                                            app/code/local/AM/SubCatMode
+code/local/AM/SubCatMode/*                                                      app/code/local/AM/SubCatMode
 AM_SubCatMode.xml                                                               app/etc/modules/AM_SubCatMode.xml
