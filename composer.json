@@ -1,0 +1,8 @@
+{
+    "name": "amarroni/magento-module-am-subcatmode",
+    "description": "This module create a new SubCatMode",
+    "type": "magento-module",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

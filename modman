@@ -1,0 +1,9 @@
+# AM Sub-Cat-Mode
+
+# Frontend templates
+design/frontend/layout/*                                                        app/design/frontend/base/default/layout/
+design/frontend/template/*                                                      app/design/frontend/base/default/template/am/
+
+# code
+code                                                                            app/code/local/AM/SubCatMode
+AM_SubCatMode.xml                                                               app/etc/modules/AM_SubCatMode.xml

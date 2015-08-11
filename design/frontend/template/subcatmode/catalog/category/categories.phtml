@@ -1,0 +1,57 @@
+<?php
+	$_helper    = $this->helper('catalog/output');
+	if (!Mage::registry('current_category')) return ?>
+<?php $_categories = $this->getCurrentChildCategories();?>
+<?php $_count = is_array($_categories)?count($_categories):$_categories->count();?>
+
+<?php if($_count): ?>
+	<div align="center">
+	<div class="browse-title"><?php echo $this->getCurrentCategory()->getName(); ?></div>
+	<?php $_columnCount = /*'4'*/ $this->getColumnCount(); $i=0;
+		foreach ($_categories as $k => $_category):?>
+
+    	<?php if($_category->getIsActive()):
+    		$subCatRow ='';
+
+    		if(($_count-$i) <= $_columnCount){
+    			$subCatRow = ' subcat-row';
+    		}
+    	 ?>
+			<?php if ($i++%$_columnCount==0):?>
+
+	       	<ul class="subcat-grid<?= $subCatRow ?>">
+	        <?php endif; ?>
+	         <?php
+				$_imgHtml = null;
+				if($_category->getImage()){
+
+					$_imgHtml = '<img src="'. Mage::getBaseUrl('media').'catalog/category/'.$_category->getImage().'" alt="'.$this->htmlEscape($_category->getName()).'" title="'.$this->htmlEscape($_category->getName()).'" width="69" height="72"/>';
+        		 	$_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+				}
+
+    		 ?>
+		        <li class="category-content<?php echo ($i%$_columnCount==0?' last':'')?>">
+		            <div class="category-content-img">
+			            <a href="<?php echo $this->getCategoryUrl($_category) ?>" alt="<? echo $_category->getName(); ?>">
+			            	<?php echo (!is_null($_imgHtml))?$_imgHtml:''; ?>
+		            	</a>
+	            	</div>
+	            	<h2 class="subcat-name">
+						<a href="<?php echo $this->getCategoryUrl($_category) ?>" alt="<? echo $_category->getName(); ?>">
+							<span><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></span>
+						</a>
+					</h2>
+			    </li>
+	        <?php if ($i%$_columnCount==0 || $i==$_count): ?>
+	        </ul>
+	        <?php endif; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+	</div>
+<?php endif; ?>
+
+<style>
+.subcat-grid {width: 100% !important;display: inline-table;}
+.category-content {width: 130px;height: 110px;float: left;padding-right: 4px;text-align: center;}
+.subcat-grid .last {padding-right: 0px !important;}
+</style>
