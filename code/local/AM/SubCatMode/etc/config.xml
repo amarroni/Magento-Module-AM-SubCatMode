@@ -45,5 +45,15 @@
                 </am_subcatmode>
             </updates>
         </layout>
+        <events>
+            <catalog_category_flat_loadnodes_before>
+                <observers>
+                    <am_subcatmode>
+                        <class>AM_SubCatMode_Model_Catalog_Observer</class>
+                        <method>customSelect</method>
+                    </am_subcatmode>
+                </observers>
+            </catalog_category_flat_loadnodes_before>
+        </events>
     </frontend>
 </config>

@@ -6,7 +6,6 @@
 
 <?php if($_count): ?>
 	<div align="center">
-	<div class="browse-title"><?php echo $this->getCurrentCategory()->getName(); ?></div>
 	<?php $_columnCount = /*'4'*/ $this->getColumnCount(); $i=0;
 		foreach ($_categories as $k => $_category):?>
 
@@ -24,23 +23,23 @@
 	         <?php
 				$_imgHtml = null;
 				if($_category->getImage()){
-
-					$_imgHtml = '<img src="'. Mage::getBaseUrl('media').'catalog/category/'.$_category->getImage().'" alt="'.$this->htmlEscape($_category->getName()).'" title="'.$this->htmlEscape($_category->getName()).'" width="69" height="72"/>';
+					$scapeName = $this->htmlEscape($_category->getName());
+					$_imgHtml = '<img src="'. Mage::getBaseUrl('media').'catalog/category/'.$_category->getImage().'" alt="'.$scapeName.'" title="'.$scapeName.'" width="200" height="200"/>';
         		 	$_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
 				}
 
     		 ?>
 		        <li class="category-content<?php echo ($i%$_columnCount==0?' last':'')?>">
 		            <div class="category-content-img">
-			            <a href="<?php echo $this->getCategoryUrl($_category) ?>" alt="<? echo $_category->getName(); ?>">
+			            <a href="<?php echo $this->getCategoryUrl($_category) ?>" alt="<?php echo $this->htmlEscape($_category->getName()); ?>">
 			            	<?php echo (!is_null($_imgHtml))?$_imgHtml:''; ?>
 		            	</a>
 	            	</div>
-	            	<h2 class="subcat-name">
+	            	<h4 class="subcat-name">
 						<a href="<?php echo $this->getCategoryUrl($_category) ?>" alt="<? echo $_category->getName(); ?>">
 							<span><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></span>
 						</a>
-					</h2>
+					</h4>
 			    </li>
 	        <?php if ($i%$_columnCount==0 || $i==$_count): ?>
 	        </ul>
@@ -52,6 +51,7 @@
 
 <style>
 .subcat-grid {width: 100% !important;display: inline-table;}
-.category-content {width: 130px;height: 110px;float: left;padding-right: 4px;text-align: center;}
+.category-content {float: left;padding-right: 4px;text-align: center;}
 .subcat-grid .last {padding-right: 0px !important;}
+.subcat-name {font-weight: normal}
 </style>

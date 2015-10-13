@@ -3,8 +3,6 @@
 # Frontend templates
 design/frontend/layout/*                                                        app/design/frontend/base/default/layout/
 design/frontend/template/*                                                      app/design/frontend/base/default/template/am
-design/frontend/template/*                                                      app/design/frontend/base/default/template/am-test
-design/frontend/template/*                                                      app/design/frontend/base/default/template/am-test1
 
 # code
 @shell		mkdir -p "$PROJECT/app/code/local/AM"
