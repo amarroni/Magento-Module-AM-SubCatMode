@@ -17,6 +17,12 @@
                     <category_attribute_source_mode>AM_SubCatMode_Model_Catalog_Category_Attribute_Source_Mode</category_attribute_source_mode>
                 </rewrite>
             </catalog>
+            <catalog_resource>
+                <rewrite>
+                    <category>AM_SubCatMode_Model_Resource_Catalog_Category</category>
+                </rewrite>
+            </catalog_resource>
+
             <am_subcatmode_resource>
                 <class>AM_SubCatMode_Model_Resource</class>
             </am_subcatmode_resource>
@@ -54,6 +60,14 @@
                     </am_subcatmode>
                 </observers>
             </catalog_category_flat_loadnodes_before>
+            <catalog_category_load_before>
+                <observers>
+                    <am_subcatmode_load_before>
+                        <class>AM_SubCatMode_Model_Catalog_Observer</class>
+                        <method>addImagetoSelect</method>
+                    </am_subcatmode_load_before>
+                </observers>
+            </catalog_category_load_before>
         </events>
     </frontend>
 </config>
